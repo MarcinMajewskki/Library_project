@@ -1,5 +1,6 @@
 package org.example.library.view;
 
+import lombok.AllArgsConstructor;
 import org.example.library.api.UserLoginData;
 import org.example.library.controller.LoginController;
 
