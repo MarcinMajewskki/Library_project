@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-@ToString(exclude = {"roles","address"})
+@ToString(exclude = {"roles", "address"})
 public class User {
 
     @Id

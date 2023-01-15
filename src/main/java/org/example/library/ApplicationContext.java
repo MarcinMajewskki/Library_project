@@ -5,16 +5,15 @@ import org.example.library.model.Role;
 import org.example.library.model.User;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ApplicationContext {
 
-    private static ActiveUser ACTIVE_USER;
+    private static ActiveUser activeUser;
 
     public static void setActiveUser(User user) {
-        ACTIVE_USER = new ActiveUser(
+        activeUser = new ActiveUser(
                 user.getLogin(),
                 user.getName(),
                 mapToUserRoles(user.getRoles())
@@ -22,7 +21,7 @@ public class ApplicationContext {
     }
 
     public static ActiveUser getActiveUser() {
-        return ACTIVE_USER;
+        return activeUser;
     }
 
     private static Set<UserRole> mapToUserRoles(List<Role> roles) {
