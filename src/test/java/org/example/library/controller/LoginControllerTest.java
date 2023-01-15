@@ -17,7 +17,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.library.ApplicationContext.getActiveUser;
 
-class LoginControllerTest {
+public class LoginControllerTest {
 
     LoginController loginController = new LoginController(
             new UserService(

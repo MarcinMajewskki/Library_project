@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UserServiceTest {
+public class UserServiceTest {
 
     private final static User EXISTING_USER = new User(1, "existingLogin", "password", "name", "email", null, null);
 
@@ -42,7 +42,7 @@ class UserServiceTest {
     @Test
     void whenUserPasswordAndProvidedPasswordAreTheDifferentReturnOptionalEmpty() {
         //given
-        UserLoginData userLoginData = new UserLoginData("existingLogin", "password");
+        UserLoginData userLoginData = new UserLoginData("existingLogin", "incorrectPassword");
         //when
         Optional<User> result = userService.checkAndGet(userLoginData);
         //then

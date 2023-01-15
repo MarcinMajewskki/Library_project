@@ -10,11 +10,12 @@ public class LoginView implements View {
 
     private final Scanner scanner;
     private final LoginController loginController;
-    private Optional<String> message;
+    private final Optional<String> message;
 
     public LoginView(Scanner scanner) {
         this.scanner = scanner;
         this.loginController = new LoginController();
+        this.message = Optional.empty();
     }
 
     public LoginView(Optional<String> message) {

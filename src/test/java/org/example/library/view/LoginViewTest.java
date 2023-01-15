@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class LoginViewTest {
+public class LoginViewTest {
 
     UserLoginData expectedResult = new UserLoginData("testUser", "testPassword");
 
