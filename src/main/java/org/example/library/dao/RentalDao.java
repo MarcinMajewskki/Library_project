@@ -17,6 +17,7 @@ public class RentalDao implements RentalBooksProvider {
         Query<Rental> query = session.createQuery(SEARCH_BY_ID_QUERY, Rental.class)
                 .setParameter("id", id);
         List<Rental> allRented = query.getResultList();
+        session.close();
         return allRented;
     }
 }
