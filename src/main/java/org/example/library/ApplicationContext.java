@@ -14,6 +14,7 @@ public class ApplicationContext {
 
     public static void setActiveUser(User user) {
         activeUser = new ActiveUser(
+                user.getId(),
                 user.getLogin(),
                 user.getName(),
                 mapToUserRoles(user.getRoles())
