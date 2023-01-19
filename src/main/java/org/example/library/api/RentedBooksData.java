@@ -2,13 +2,12 @@ package org.example.library.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @Data
 public class RentedBooksData {
     private String title;
-    private Date rentDate;
-    private Date returnUntil;
+    private LocalDate rentDate;
+    private LocalDate returnUntil;
 }
