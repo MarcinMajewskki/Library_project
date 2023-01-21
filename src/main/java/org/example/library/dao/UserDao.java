@@ -9,7 +9,10 @@ import java.util.Optional;
 
 public class UserDao implements UserProvider {
 
-    private static final String SEARCH_BY_LOGIN_QUERY = "from User u where u.login=:login";
+    private static final String SEARCH_BY_LOGIN_QUERY = "from User u" +
+            " join fetch u.roles" +
+            " left join fetch u.rentals" +
+            " where u.login=:login";
 
     @Override
     public Optional<User> findUserByLogin(String login) {

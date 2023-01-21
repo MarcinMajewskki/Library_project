@@ -2,13 +2,15 @@ package org.example.library.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
+
 @AllArgsConstructor
+@Getter
 @Entity
 @NoArgsConstructor
 public class Rental {

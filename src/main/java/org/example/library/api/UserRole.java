@@ -14,7 +14,7 @@ public enum UserRole {
 
     //Pamiętaj że wyszukiwanie odbywa się TYLKO WIELKIMI LITERAMI
     public static UserRole find(String name) {
-        return valueOf(name);
+        return valueOf(name.toUpperCase());
     }
 
 }

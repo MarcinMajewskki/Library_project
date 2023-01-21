@@ -1,33 +1,35 @@
 package org.example.library.view;
 
+import org.example.library.api.RentedBooksData;
 import org.example.library.controller.RentalController;
-import java.util.Optional;
+import java.util.Scanner;
+import java.util.Set;
 
 public class RentedBooksView implements View {
     private final RentalController rentalController;
-    private final Optional<String> message;
+    private final Scanner scanner;
 
     public RentedBooksView() {
-        this.message = Optional.empty();
         this.rentalController = new RentalController();
+        this.scanner = new Scanner(System.in);
     }
 
     public RentedBooksView(RentalController rentalController) {
         this.rentalController = rentalController;
-        this.message = Optional.empty();
-    }
-    public RentedBooksView(Optional<String> message) {
-        this.message = message;
-        this.rentalController = new RentalController();
-    }
-    public RentedBooksView(RentalController rentalController, Optional<String> message) {
-        this.rentalController = rentalController;
-        this.message = message;
+        this.scanner = new Scanner(System.in);
     }
 
 
     @Override
-    public void display()  {
-        rentalController.rentals().display();
+    public void display() {
+        Set<RentedBooksData> rentals = rentalController.rentals();
+        if (!rentals.isEmpty()) {
+            rentals.forEach(System.out::println);
+        } else {
+            System.out.println("You don't have to return any books");
+        }
+        System.out.println("\n\n\nPress Enter key to continue...");
+        scanner.nextLine();
+        new MainMenuView().display();
     }
 }

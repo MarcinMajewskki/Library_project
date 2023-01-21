@@ -1,46 +1,36 @@
 package org.example.library.service;
 
+import org.example.library.ApplicationContext;
 import org.example.library.api.RentedBooksData;
-import org.example.library.dao.RentalBooksProvider;
-import org.example.library.dao.RentalDao;
-import org.example.library.model.Book;
+import org.example.library.dao.UserDao;
+import org.example.library.dao.UserProvider;
 import org.example.library.model.Rental;
-import java.util.ArrayList;
-import java.util.List;
 
-public class RentalService implements RentalBooksDataGetter {
-    private final int userId;
-    private final RentalBooksProvider rentalBooksProvider;
+import java.util.HashSet;
+import java.util.Set;
 
-    // BookDao class to add
+public class RentalService {
 
-    public RentalService(int userId) {
-        this.userId = userId;
-        this.rentalBooksProvider = new RentalDao();
+    private final UserProvider userProvider;
 
-        // Book Provider interface
+    public RentalService() {
+        this.userProvider = new UserDao();
     }
 
-    public RentalService(int userId, RentalBooksProvider rentalBooksProvider) {
-        this.userId = userId;
-        this.rentalBooksProvider = rentalBooksProvider;
-    }
-    @Override
-    public Book getBookByIdFromBookDAO(int bookId) { // as a parameter bookprovider interface
-        return null;
-        // Waiting for BookDao Class
+    public RentalService(UserProvider userProvider) {
+        this.userProvider = userProvider;
     }
 
-    public List<RentedBooksData> getRentedBooksData(){
-        List<Rental> rentals = rentalBooksProvider.findRentedAllBooksByUser(userId);
-        List<RentedBooksData> rentedBooksData = new ArrayList<>();
+    public Set<RentedBooksData> getRentedBooksData() {
+        Set<Rental> rentals = userProvider
+                .findUserByLogin(ApplicationContext.getActiveUser().getLogin()).get().getRentals();
+        Set<RentedBooksData> rentedBooksData = new HashSet<>();
         for (Rental rental : rentals) {
             rentedBooksData.add(new RentedBooksData(
-                    this.getBookByIdFromBookDAO(rental.getId()).getTitle()
+                    rental.getBook().getTitle()
                     , rental.getRentDate()
                     , rental.getDueDate()));
         }
-
         return rentedBooksData;
     }
 }
