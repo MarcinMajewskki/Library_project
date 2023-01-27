@@ -27,11 +27,11 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Title= " + title + '\'' +
-                ", isbn= " + isbn +
-                ", author= " + author +
-                ", category= " + category +
-                ", amountAvailable= " + amountAvailable + ".\n";
+        return "Title= " + title + '\''
+                + ", isbn= " + isbn
+                + ", author= " + author
+                + ", category= " + category
+                + ", amountAvailable= " + amountAvailable + ".\n";
     }
 
     public String toMapString() {

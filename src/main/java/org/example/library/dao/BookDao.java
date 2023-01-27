@@ -46,6 +46,8 @@ public class BookDao implements BookProvider {
     }
 //sessionupdate - aktualizacje
     //persist - dodawanie danych w bazie
-
+    //TODO Utworzyc instancje obiektu rental, ustawic obecne daty i date zwrotu, pobrac uzytkownika na podstawie apllication context i go ustawic w rental
+    // pobrac ksiazke ponownie aby upewnic się czy nie zmieniła sie ilosc dostepnych ksiazek , zdjac jedna pozycje
+    // w service sprawdzic czy sa dostepne jeszcze ksiazki
 
 }
