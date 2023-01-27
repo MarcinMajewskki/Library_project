@@ -25,4 +25,16 @@ public class Book {
     private Category category;
     private Integer amountAvailable;
 
+    @Override
+    public String toString() {
+        return "Title= " + title + '\'' +
+                ", isbn= " + isbn +
+                ", author= " + author +
+                ", category= " + category +
+                ", amountAvailable= " + amountAvailable + ".\n";
+    }
+
+    public String toMapString() {
+        return title + " - " + author.getName();
+    }
 }
