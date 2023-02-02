@@ -9,13 +9,15 @@ import java.util.Optional;
 
 public class UserDao implements UserProvider {
 
-    private static final String SEARCH_BY_LOGIN_QUERY = "from User u where u.login=:login";
+    private static final String SEARCH_BY_LOGIN_QUERY = "from User u"
+            + " join fetch u.roles"
+            + " left join fetch u.rentals"
+            + " where u.login=:login";
 
     @Override
     public Optional<User> findUserByLogin(String login) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery(SEARCH_BY_LOGIN_QUERY, User.class)
-                .setParameter("login", login);
+        Query<User> query = session.createQuery(SEARCH_BY_LOGIN_QUERY, User.class).setParameter("login", login);
         Optional<User> user = query.getResultList().stream().findFirst();
         session.close();
         return user;

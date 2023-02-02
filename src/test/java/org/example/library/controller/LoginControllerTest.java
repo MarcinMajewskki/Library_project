@@ -27,11 +27,12 @@ public class LoginControllerTest {
                             "password",
                             "name",
                             "email",
-                            List.of(
+                            Set.of(
                                     new Role(1, "USER"),
                                     new Role(2, "ADMIN")
                             ),
-                            null)
+                            null
+                            ,null)
                     )
             )
     );
