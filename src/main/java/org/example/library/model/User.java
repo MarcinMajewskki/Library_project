@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -29,9 +29,11 @@ public class User {
             joinColumns = { @JoinColumn(name = "user_id")},
             inverseJoinColumns = { @JoinColumn(name = "role_id")}
     )
-    private List<Role> roles;
+    private Set<Role> roles;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Rental> rentals;
 }

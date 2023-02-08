@@ -10,6 +10,7 @@ import java.util.Set;
 @Getter
 public class ActiveUser {
 
+    private final int id;
     private final String login;
     private final String name;
     private final Set<UserRole> userRoles;
