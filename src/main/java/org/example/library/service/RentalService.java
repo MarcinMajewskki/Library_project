@@ -1,5 +1,3 @@
-package org.example.library.service;
-
 import org.example.library.ApplicationContext;
 import org.example.library.api.RentedBooksData;
 import org.example.library.dao.UserDao;
